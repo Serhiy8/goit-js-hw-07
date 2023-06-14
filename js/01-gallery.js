@@ -9,19 +9,18 @@ const createImg = () => {
     .map(
       ({ preview, original, description }) =>
         `<li class="gallery__item">
-          <a class="gallery__link" href="${original}" onclick="return false";>
+            <a class="gallery__link" href="${original}" onclick="return false";>
             <img 
                 src = "${preview}"
                 class="gallery__image"
                 data-source="${original}"
                 alt="${description}";>
-          </a>
-        </li>`
+        </a></li>`
     )
     .join(""));
 };
 
-const openModalWindow = (evt) => {
+const optionsModalWindow = (evt) => {
   const isImageClick = evt.target.classList.contains("gallery__image");
   const imgInModalWindow = evt.target.dataset.source;
   if (!isImageClick) {
@@ -41,4 +40,4 @@ const openModalWindow = (evt) => {
 };
 
 createImg();
-galleryRef.addEventListener("click", openModalWindow);
+galleryRef.addEventListener("click", optionsModalWindow);
