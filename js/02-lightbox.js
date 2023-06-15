@@ -6,7 +6,7 @@ console.log(galleryItems);
 const galleryRef = document.querySelector("ul.gallery");
 
 const createImg = () => {
-  return (galleryRef.innerHTML = galleryItems
+  galleryRef.innerHTML = galleryItems
     .map(
       ({ preview, original, description }) =>
         `<li class="gallery__item">
@@ -17,13 +17,11 @@ const createImg = () => {
               alt="${description}";>
         </a></li>`
     )
-    .join(""));
+    .join("");
 };
 createImg();
 
-const gallery = new SimpleLightbox(".gallery a", {
+new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });
-
-gallery.on("show.simplelightbox");

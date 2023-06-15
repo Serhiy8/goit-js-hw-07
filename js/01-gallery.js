@@ -31,12 +31,16 @@ const optionsModalWindow = (evt) => {
     `<img width="1400" height="900" src="${imgInModalWindow}">`
   );
 
-  instance.show();
-  galleryRef.addEventListener("keydown", (evt) => {
+  function useEscape(evt) {
+    console.log(evt.code);
     if (evt.code === "Escape") {
       instance.close();
+      galleryRef.removeEventListener("keydown", useEscape);
     }
-  });
+  }
+
+  instance.show();
+  galleryRef.addEventListener("keydown", useEscape);
 };
 
 createImg();
